@@ -1,5 +1,5 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-import styles from "./tailwind.css"
+import styles from "./tailwind.css";
 
 import type { LinksFunction } from "@remix-run/node";
 import {
@@ -9,6 +9,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useMatches,
 } from "@remix-run/react";
 
 export const links: LinksFunction = () => [
@@ -17,6 +18,8 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
+  const matches = useMatches();
+
   return (
     <html lang="en">
       <head>
@@ -26,6 +29,20 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <header>
+          <ol style={{ listStyle: "none" }} className="flex gap-2 ">
+            {matches
+              .filter((match) => match.handle && match.handle)
+              .map((match, index) => (
+                <li
+                  key={index}
+                  className="before:content-['/'] first:before:content-[''] "
+                >
+                  {match.handle.breadcrumb(match)}
+                </li>
+              ))}
+          </ol>
+        </header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
