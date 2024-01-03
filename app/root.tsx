@@ -1,4 +1,3 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
 import styles from "./tailwind.css";
 
 import type { LinksFunction } from "@remix-run/node";
@@ -11,11 +10,9 @@ import {
   ScrollRestoration,
   useMatches,
 } from "@remix-run/react";
+import ProgessBar from "./components/global-progess";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: styles },
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
+export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export default function App() {
   const matches = useMatches();
@@ -29,6 +26,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <ProgessBar />
         <header>
           <ol style={{ listStyle: "none" }} className="flex gap-2 ">
             {matches

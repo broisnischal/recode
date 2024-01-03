@@ -1,6 +1,6 @@
 import { Editor, DiffEditor } from "@monaco-editor/react";
 import { useState } from "react";
-import { LivePreview, LiveProvider } from "react-live";
+// import { LivePreview, LiveProvider } from "react-live";
 
 export default function Code() {
   const defaultCode = `
