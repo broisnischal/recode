@@ -13,6 +13,8 @@ export default function Index() {
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Recode Dev</h1>
       <Link to="/main">Main</Link>
+      <br />
+      <Link to="/pay">Pay</Link>
       <Outlet />
     </div>
   );
