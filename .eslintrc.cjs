@@ -8,6 +8,7 @@
 module.exports = {
   root: true,
   parserOptions: {
+    project: "./tsconfig.json",
     ecmaVersion: "latest",
     sourceType: "module",
     ecmaFeatures: {
@@ -61,6 +62,9 @@ module.exports = {
             alwaysTryTypes: true,
           },
         },
+      },
+      rules: {
+        "@typescript-eslint/ban-ts-comment": "off",
       },
       extends: [
         "plugin:@typescript-eslint/recommended",
