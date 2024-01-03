@@ -38,6 +38,7 @@ export default function App() {
                   key={index}
                   className="before:content-['/'] first:before:content-[''] "
                 >
+                  {/* @ts-expect-error */}
                   {match.handle.breadcrumb(match)}
                 </li>
               ))}
