@@ -21,7 +21,7 @@ export default function Payy() {
     await stripe?.confirmPayment({
       elements: elements!,
       confirmParams: {
-        return_url: "http://localhost:3000/pay/success",
+        return_url: `${window.location.origin}/pay/success`,
       },
     });
   };

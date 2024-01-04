@@ -1,0 +1,29 @@
+diff --git a/app/routes/_index.tsx b/app/routes/_index.tsx
+index 660aed4..80a9af9 100644
+--- a/app/routes/_index.tsx
++++ b/app/routes/_index.tsx
+@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => {
+ export default function Index() {
+   return (
+     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
+-      <h1>Welcome to Recode Dev</h1>
++      <h1>Welcome to Recode Dev Changes</h1>
+       <Link to="/main">Main</Link>
+       <br />
+       <Link to="/pay">Pay</Link>
+diff --git a/main.db b/main.db
+new file mode 100644
+index 0000000..25e2eb3
+Binary files /dev/null and b/main.db differ
+diff --git a/package.json b/package.json
+index 2b23082..3c514c5 100644
+--- a/package.json
++++ b/package.json
+@@ -12,6 +12,7 @@
+   },
+   "dependencies": {
+     "@epic-web/remember": "^1.0.2",
++    "@google/generative-ai": "^0.1.3",
+     "@monaco-editor/react": "^4.6.0",
+     "@prisma/client": "^5.7.1",
+     "@radix-ui/react-avatar": "^1.0.4",
