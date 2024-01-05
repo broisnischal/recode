@@ -15,6 +15,8 @@ export default function Index() {
       <Link to="/main">Main</Link>
       <br />
 
+      <Link to="/code">Code</Link>
+      <br />
       <Link to="/chat">Chat</Link>
       <br />
       <Link to="/pay">Pay</Link>
