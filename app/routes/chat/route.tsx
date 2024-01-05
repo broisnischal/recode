@@ -13,21 +13,26 @@ import { useEffect, useRef, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Skeleton } from "~/components/ui/skeleton";
-
 export async function loader() {
-  const history = await chat.getHistory();
-
-  return { history };
+  try {
+    const history = await chat.getHistory();
+    return { history };
+  } catch (error) {
+    console.error("Failed to load chat history:", error);
+    return { history: [], error: "Failed to load chat history." };
+  }
 }
 
 export async function action({ request }: ActionFunctionArgs) {
-  const formData = await request.formData();
-
-  const message = formData.get("message");
-
-  const result = await chat.sendMessage(message as string);
-
-  return json({ ok: true, result });
+  try {
+    const formData = await request.formData();
+    const message = formData.get("message");
+    const result = await chat.sendMessage(message as string);
+    return json({ ok: true, result });
+  } catch (error) {
+    console.error("Failed to send message:", error);
+    return json({ ok: false, error: "Failed to send message." });
+  }
 }
 
 export default function Chat() {
@@ -63,6 +68,8 @@ export default function Chat() {
       {history.length > 0 ? (
         <div ref={scrollRef} className="h-[calc(70vh)] overflow-y-scroll">
           <div className="flex flex-col gap-5 p-5">
+            {/* {message.error && <p className="text-red-500">{message.error}</p>} */}
+
             {history.map((item) => (
               <div className={`${item.role !== "user" ? "" : "underline"} `}>
                 {item.parts.map((part) => {
