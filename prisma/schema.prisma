@@ -7,6 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Code {
+  id        String   @id @default(cuid())
+  code      String
+  language  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  editedby  User[]
+}
+
 model User {
   id       String   @id @default(cuid())
   email    String   @unique
@@ -25,6 +34,7 @@ model User {
   UserImage   UserImage?   @relation(fields: [userImageId], references: [id])
   userImageId String?
   Blog        Blog[]
+  Code        Code[]
 }
 
 model Password {
