@@ -14,7 +14,6 @@ export default function Index() {
       <h1>Welcome to Recode Dev Changes</h1>
       <Link to="/main">Main</Link>
       <br />
-
       <Link to="/code">Code</Link>
       <br />
       <Link to="/chat">Chat</Link>
